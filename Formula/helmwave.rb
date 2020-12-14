@@ -1,18 +1,16 @@
 class Helmwave < Formula
   desc "🌊 GitOps for Helm Charts"
   homepage "https://github.com/zhilyaev/helmwave"
-  url "https://github.com/zhilyaev/helmwave/archive/0.5.0.tar.gz"
-  sha256 "97dd18b610b86ac81ed7bfd13eee3260ccfce8470854fac3ff31c839d7ecd459"
+  url "https://github.com/zhilyaev/helmwave/releases/download/0.5.0/helmwave-0.5.0-darwin-amd64.tar.gz"
+  sha256 "8fd65abce5c8f34f4c95723d553fc8b4962787e7aa698fd94898443c2f32bc34"
   license "MIT"
 
-  depends_on "go" => :build
 
   def install
-    system "make", "build"
-    cp_f "helmwave", "/usr/local/bin/helmwave"
+    bin.install "helmwave"
   end
 
   test do
-    system "helmwave"
+    system "helmwave", "-v"
   end
 end
